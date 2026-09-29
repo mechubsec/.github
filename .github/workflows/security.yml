@@ -1,0 +1,15 @@
+name: security
+
+# Dogfood the shared secret scan on this repo, so a broken change to it fails
+# here before any other repository picks it up.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  secrets:
+    uses: ./.github/workflows/gitleaks.yml

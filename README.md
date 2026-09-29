@@ -25,3 +25,20 @@ Some configuration files must live in each repository and cannot be inherited:
   Copy `dependabot/dependabot.yml` to your repo's `.github/dependabot.yml`.
 
 See each template directory's README for usage instructions.
+
+## Reusable workflows
+
+- [`.github/workflows/gitleaks.yml`](.github/workflows/gitleaks.yml) — secret
+  scan with the pinned gitleaks binary (no license needed). Call it from any
+  mechubsec repo, pinned to a commit SHA:
+
+  ```yaml
+  jobs:
+    secrets:
+      uses: mechubsec/.github/.github/workflows/gitleaks.yml@<commit sha>
+  ```
+
+  It scans the PR (base..head) or push (before..after) range, as
+  gitleaks-action did; manual/scheduled runs scan full history. It picks up
+  the caller's `.gitleaks.toml` if present. Bump the gitleaks
+  version here, once, then update callers' pinned SHA.
