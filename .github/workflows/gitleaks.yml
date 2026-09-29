@@ -98,6 +98,12 @@ jobs:
             echo "Scanning commit range: $scan_range"
             args+=(--log-opts="$scan_range")
           else
-            echo "Scanning full history ($scan_event)"
+            # HEAD only. gitleaks' default is `git log --all`, and checkout
+            # with fetch-depth 0 brings every branch, so a bare full scan would
+            # also judge other open PR branches against this branch's
+            # .gitleaksignore -- one PR adding reviewed fingerprints would fail
+            # every other repo branch's full scan until it merged.
+            echo "Scanning full history of HEAD ($scan_event)"
+            args+=(--log-opts="--full-history HEAD")
           fi
           gitleaks "${args[@]}"
