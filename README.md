@@ -38,5 +38,7 @@ See each template directory's README for usage instructions.
       uses: mechubsec/.github/.github/workflows/gitleaks.yml@<commit sha>
   ```
 
-  It picks up the caller's `.gitleaks.toml` if present. Bump the gitleaks
+  It scans the PR (base..head) or push (before..after) range, as
+  gitleaks-action did; manual/scheduled runs scan full history. It picks up
+  the caller's `.gitleaks.toml` if present. Bump the gitleaks
   version here, once, then update callers' pinned SHA.

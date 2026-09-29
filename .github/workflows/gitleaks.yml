@@ -50,16 +50,45 @@ jobs:
           sudo install -m 0755 gitleaks /usr/local/bin/gitleaks
           rm -f gitleaks.tar.gz gitleaks
 
-      # `git` scans history. `detect` was removed in 8.x; the subcommands are
-      # dir, git and stdin. The config path comes in through env, not
-      # interpolated into the script, so a caller cannot inject shell.
+      # Scan the commits this event introduces, as gitleaks-action did: a PR
+      # scans base..head, a push scans before..after. Scanning full history on
+      # every run instead would re-fail on already-published fixtures forever
+      # and teach everyone to ignore a red check. A manual or scheduled run
+      # scans full history, which is how the backlog gets audited.
+      # `detect` was removed in 8.x; the subcommands are dir, git and stdin.
+      # Everything reaches the script through env, never interpolated into it.
       - name: gitleaks (secrets)
         env:
           GITLEAKS_CONFIG_PATH: ${{ inputs.config }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+          PUSH_AFTER_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
           args=(git . --redact --no-banner)
           if [ -f "$GITLEAKS_CONFIG_PATH" ]; then
             args+=(--config "$GITLEAKS_CONFIG_PATH")
+          fi
+          zero_sha=0000000000000000000000000000000000000000
+          case "$EVENT_NAME" in
+            pull_request|pull_request_target)
+              scan_range="${PR_BASE_SHA}..${PR_HEAD_SHA}" ;;
+            push)
+              # A new branch has no "before"; scan just the pushed commit.
+              if [ -z "$PUSH_BEFORE_SHA" ] || [ "$PUSH_BEFORE_SHA" = "$zero_sha" ]; then
+                scan_range="-1 ${PUSH_AFTER_SHA}"
+              else
+                scan_range="${PUSH_BEFORE_SHA}..${PUSH_AFTER_SHA}"
+              fi ;;
+            *)
+              scan_range="" ;;
+          esac
+          if [ -n "$scan_range" ]; then
+            echo "Scanning commit range: $scan_range"
+            args+=(--log-opts="$scan_range")
+          else
+            echo "Scanning full history ($EVENT_NAME)"
           fi
           gitleaks "${args[@]}"
