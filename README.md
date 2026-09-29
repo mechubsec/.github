@@ -1,0 +1,27 @@
+# .github
+
+```
+●───●
+     \        m e c h u b
+  ●───●───●   deterministic decides · the model explains · a human approves
+```
+
+Default community health files for [`mechubsec`](https://github.com/mechubsec).
+GitHub applies the files here to any public repository under this organization that
+does not provide its own:
+
+- [`SECURITY.md`](SECURITY.md) — how to report a vulnerability (GitHub Private
+  Vulnerability Reporting)
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution guidelines
+- [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) — expected conduct
+
+A repository can override any of these by committing its own copy.
+
+## Templates (not inherited)
+
+Some configuration files must live in each repository and cannot be inherited:
+
+- [`dependabot/`](dependabot/) — Dependabot version update configuration template.
+  Copy `dependabot/dependabot.yml` to your repo's `.github/dependabot.yml`.
+
+See each template directory's README for usage instructions.
