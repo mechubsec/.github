@@ -19,6 +19,10 @@ on:
         description: Path to the gitleaks config in the caller repo. Used only if the file exists; otherwise gitleaks' built-in rules apply.
         type: string
         default: .gitleaks.toml
+      full-history:
+        description: Scan every commit on every run instead of just the event's range. For repos whose history is already clean and should stay provably so.
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -60,6 +64,7 @@ jobs:
       - name: gitleaks (secrets)
         env:
           GITLEAKS_CONFIG_PATH: ${{ inputs.config }}
+          FULL_HISTORY: ${{ inputs.full-history }}
           EVENT_NAME: ${{ github.event_name }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
@@ -72,7 +77,11 @@ jobs:
             args+=(--config "$GITLEAKS_CONFIG_PATH")
           fi
           zero_sha=0000000000000000000000000000000000000000
-          case "$EVENT_NAME" in
+          scan_event="$EVENT_NAME"
+          if [ "$FULL_HISTORY" = "true" ]; then
+            scan_event=full-history
+          fi
+          case "$scan_event" in
             pull_request|pull_request_target)
               scan_range="${PR_BASE_SHA}..${PR_HEAD_SHA}" ;;
             push)
@@ -89,6 +98,6 @@ jobs:
             echo "Scanning commit range: $scan_range"
             args+=(--log-opts="$scan_range")
           else
-            echo "Scanning full history ($EVENT_NAME)"
+            echo "Scanning full history ($scan_event)"
           fi
           gitleaks "${args[@]}"
