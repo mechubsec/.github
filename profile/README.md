@@ -19,6 +19,15 @@ reach infrastructure only through MCP servers fronting each management plane,
 every tool call is scoped and audited, and autonomy is granted rung by rung,
 enforced by token scope at the server rather than by prompt.
 
+## The name
+
+**mechub** — **M**achine **E**xecuted & **C**hecked · **Hub**.
+
+It started as *mechanic hub*: a workshop for network-security tools you can
+open up and work on. It now also says how they work — machines execute the
+change, deterministic checks decide whether it stands, a human approves, and
+the hub is where every vendor's MCP server meets, on hardware you own.
+
 ## The ecosystem
 
 | Layer | Projects |
