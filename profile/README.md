@@ -34,9 +34,20 @@ the hub is where every vendor's MCP server meets, on hardware you own.
 |---|---|
 | **Foundation** | [`mecmcp`](https://github.com/mechubsec/mecmcp) · [`rustnetconf`](https://github.com/mechubsec/rustnetconf) · [`rustez`](https://github.com/mechubsec/rustez) |
 | **MCP servers** | [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) · [`rustpanosmcp`](https://github.com/mechubsec/rustpanosmcp) · [`rustsdcmcp`](https://github.com/mechubsec/rustsdcmcp) · [`rustmistmcp`](https://github.com/mechubsec/rustmistmcp) · [`rustproxmoxmcp`](https://github.com/mechubsec/rustproxmoxmcp) · [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) · [`rustfortimcp`](https://github.com/mechubsec/rustfortimcp) · [`rustopnsmcp`](https://github.com/mechubsec/rustopnsmcp) |
-| **Data** | [`ssdf`](https://github.com/mechubsec/ssdf) — sovereign security data fabric |
+| **Data** | [`ssdf`](https://github.com/mechubsec/ssdf) — Sovereign Security Data Fabric; the only repository with a Python core |
 | **Evaluation** | [`mechubbench`](https://github.com/mechubsec/mechubbench) — tool-call benchmark corpus and runner for network-automation agents |
-| **Skills & tools** | [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare) · [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter) · [`fwconfigsantizer`](https://github.com/mechubsec/fwconfigsantizer) · [`srxsync`](https://github.com/mechubsec/srxsync) |
+| **Skills & tools** | [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare) · [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter) · [`fwconfigsanitizer`](https://github.com/mechubsec/fwconfigsanitizer) · [`srxsync`](https://github.com/mechubsec/srxsync) |
+
+## Start here
+
+- **Foundation:** Start with [`mecmcp`](https://github.com/mechubsec/mecmcp), the shared foundation for connecting the ecosystem to management planes.
+- **MCP servers:** Use a vendor server such as [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) to explore a runnable example that fronts a management plane.
+- **Data:** [`ssdf`](https://github.com/mechubsec/ssdf) provides the Sovereign Security Data Fabric and its Python core.
+- **Evaluation:** [`mechubbench`](https://github.com/mechubsec/mechubbench) contains benchmark cases and a runner for network-automation tool calls.
+- **Skills & tools:** [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare) shares reusable skills, while the companion tools convert, sanitize, and synchronize firewall data.
+
+For a newcomer, `mecmcp` is the recommended first repository because it explains
+the common foundation; `rustunifimcp` is the shortest runnable server example.
 
 ## Principles
 

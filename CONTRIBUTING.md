@@ -21,6 +21,7 @@ inspectable, and honest are very welcome.
 - Match the surrounding code's style; explain the "why" in the description.
 - Include tests where the project has them, and note how you verified the change.
 - Label maturity honestly: if something is partial or unverified, say so.
+- For README changes, follow the [README opening template](README-TEMPLATE.md).
 
 ## Ground rules
 - Deterministic decides, the model explains, a human approves — don't add an
