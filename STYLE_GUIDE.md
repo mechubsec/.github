@@ -39,4 +39,3 @@ Use these fuller forms everywhere, including headings, prose, and metadata:
 - Apply this guide to README edits in the same PR when practical.
 - Preserve the project rule: deterministic code decides, the model explains,
   and a human approves.
-
