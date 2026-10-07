@@ -48,4 +48,10 @@ the hub is where every vendor's MCP server meets, on hardware you own.
 Public mechub projects are MIT licensed. Report vulnerabilities privately via
 the **Security** tab of the affected repository.
 
+## Get in touch / testers wanted
+
+Interested in trying mechub or helping test it? Join the [org
+Discussions](https://github.com/mechubsec/.github/discussions). Report suspected
+vulnerabilities privately through the [security policy](https://github.com/mechubsec/.github/security/policy).
+
 <p align="center"><sub>🌐 <a href="https://mechub.org">mechub.org</a></sub></p>
