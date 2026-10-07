@@ -52,7 +52,7 @@ the version, not instead of it.
 | [`rustproxmoxmcp`](https://github.com/mechubsec/rustproxmoxmcp) | [v0.10.0](https://github.com/mechubsec/rustproxmoxmcp/releases/tag/v0.10.0) | ![status](https://img.shields.io/badge/status-beta-yellow) |
 | [`rustsdcmcp`](https://github.com/mechubsec/rustsdcmcp) | [v0.1.0](https://github.com/mechubsec/rustsdcmcp/releases/tag/v0.1.0) | ![status](https://img.shields.io/badge/status-alpha-orange) |
 | [`rustmistmcp`](https://github.com/mechubsec/rustmistmcp) | [v0.3.2](https://github.com/mechubsec/rustmistmcp/releases/tag/v0.3.2) | ![status](https://img.shields.io/badge/status-alpha-orange) |
-| [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) | [v0.5.0](https://github.com/mechubsec/rustunifimcp/releases/tag/v0.5.0) | ![status](https://img.shields.io/badge/status-alpha-orange) |
+| [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) | [v0.6.0](https://github.com/mechubsec/rustunifimcp/releases/tag/v0.6.0) | ![status](https://img.shields.io/badge/status-alpha-orange) |
 | [`rustfortimcp`](https://github.com/mechubsec/rustfortimcp) | unreleased | ![status](https://img.shields.io/badge/status-planned-lightgrey) |
 | [`rustopnsmcp`](https://github.com/mechubsec/rustopnsmcp) | unreleased | ![status](https://img.shields.io/badge/status-planned-lightgrey) |
 
