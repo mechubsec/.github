@@ -3,7 +3,7 @@
 <h1 align="center">mechub</h1>
 
 <p align="center">
-  <b>sovereign AI operations for network and security teams</b><br>
+  <b>sovereign network-security automation</b><br>
   <sub>deterministic decides · the model explains · a human approves</sub>
 </p>
 
