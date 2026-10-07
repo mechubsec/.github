@@ -53,7 +53,9 @@ if [ -z "$marker" ]; then
   exit 1
 fi
 
-latest_tag=$(git -C "$repo" tag -l 'v*' --sort=-v:refname | head -1)
+# versionsort.suffix=- ranks a pre-release tag (v1.2.3-rc1) below the final
+# tag it precedes (v1.2.3), so a stray rc tag can't outrank a real release.
+latest_tag=$(git -c versionsort.suffix=- -C "$repo" tag -l 'v*' --sort=-v:refname | head -1)
 
 if [ -n "$latest_tag" ]; then
   if [ "$marker" != "$latest_tag" ]; then

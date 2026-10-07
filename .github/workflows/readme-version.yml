@@ -15,6 +15,17 @@ name: readme-version
 # regexing free-form prose for a value that gates CI is exactly the kind of
 # non-deterministic parsing Mechub's house rule warns against. A single
 # HTML-comment marker, invisible when rendered, is unambiguous to check.
+#
+# Why the checker is inlined below instead of checked out from this repo:
+# in a called reusable workflow, `github.workflow_ref` resolves to the
+# *caller's* workflow ref, not this file's pin, so a second `checkout` of
+# mechubsec/.github using that ref either floats past the caller's pinned
+# sha (on a push) or points at a nonexistent ref (on a PR). Inlining the
+# check means the caller's existing `@<sha>` pin on this workflow is the
+# only pin that matters. `.github/scripts/check-readme-version.sh` is kept
+# as the byte-identical, independently runnable copy for local use and
+# testing; `.github/scripts/test-check-readme-version.sh` asserts the two
+# never drift apart.
 
 on:
   workflow_call:
@@ -33,7 +44,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      # In a called workflow, checkout fetches the *caller's* repository.
       # Full history (and tags) so the latest v* tag can be found.
       - name: Check out repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -41,27 +51,88 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      # The checker script lives in this (mechubsec/.github) repo, not the
-      # caller's. Reusable workflows don't get their own repo checked out
-      # automatically, so fetch it ourselves — pinned to the exact ref the
-      # caller invoked this workflow at, never floating main, so a bad edit
-      # here can't silently change behaviour for every caller still pinned
-      # to an older sha.
-      - name: Resolve the pinned ref of this reusable workflow
-        id: resolve
-        env:
-          WORKFLOW_REF: ${{ github.workflow_ref }}
-        run: |
-          set -euo pipefail
-          echo "ref=${WORKFLOW_REF#*@}" >> "$GITHUB_OUTPUT"
-
-      - name: Check out mechubsec/.github (checker script)
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          repository: mechubsec/.github
-          ref: ${{ steps.resolve.outputs.ref }}
-          path: .mechub-dot-github
-          persist-credentials: false
-
       - name: README version marker matches latest tag
-        run: .mechub-dot-github/.github/scripts/check-readme-version.sh --readme "${{ inputs.readme }}"
+        env:
+          README_PATH: ${{ inputs.readme }}
+        run: |
+          checker="$(mktemp -d)/check-readme-version.sh"
+          cat > "$checker" <<'EOF_SCRIPT'
+          BEGIN_EMBEDDED_CHECKER
+          #!/usr/bin/env bash
+          set -euo pipefail
+
+          # Validates a repo's README.md `<!-- mechub-version: ... -->` marker against
+          # its git tags:
+          #   - If a `v*` tag exists, the marker must equal the latest one exactly
+          #     (by version sort).
+          #   - If no `v*` tag exists yet, the marker must be exactly `unreleased`.
+          #   - A missing marker always fails, rather than being silently skipped.
+          #
+          # Deterministic by design: the marker is a single HTML-comment line, not
+          # something parsed out of free-form README prose.
+          #
+          # Usage: check-readme-version.sh [--readme PATH] [--repo DIR]
+          # Exit codes: 0 = match, 1 = mismatch or missing marker, 2 = usage error.
+
+          usage() {
+            cat <<'EOF'
+          Usage: check-readme-version.sh [--readme PATH] [--repo DIR]
+
+            --readme PATH   Path to the README to check (default: README.md)
+            --repo DIR      Path to the git repository to read tags from (default: .)
+          EOF
+          }
+
+          readme="README.md"
+          repo="."
+
+          while [ $# -gt 0 ]; do
+            case "$1" in
+              --readme) readme="$2"; shift 2 ;;
+              --repo) repo="$2"; shift 2 ;;
+              -h|--help) usage; exit 0 ;;
+              *) echo "unknown argument: $1" >&2; usage >&2; exit 2 ;;
+            esac
+          done
+
+          if [ ! -f "$readme" ]; then
+            echo "error: README not found at $readme" >&2
+            exit 2
+          fi
+
+          marker=$(sed -n \
+            's/.*<!--[[:space:]]*mechub-version:[[:space:]]*\([^[:space:]]*\)[[:space:]]*-->.*/\1/p' \
+            "$readme" | head -1)
+
+          if [ -z "$marker" ]; then
+            echo "error: no <!-- mechub-version: ... --> marker found in $readme" >&2
+            echo "Add one near the top of the README, e.g.:" >&2
+            echo "  <!-- mechub-version: v1.2.3 -->" >&2
+            echo "  <!-- mechub-version: unreleased -->" >&2
+            echo "See the marker convention in mechubsec/.github's README." >&2
+            exit 1
+          fi
+
+          # versionsort.suffix=- ranks a pre-release tag (v1.2.3-rc1) below the final
+          # tag it precedes (v1.2.3), so a stray rc tag can't outrank a real release.
+          latest_tag=$(git -c versionsort.suffix=- -C "$repo" tag -l 'v*' --sort=-v:refname | head -1)
+
+          if [ -n "$latest_tag" ]; then
+            if [ "$marker" != "$latest_tag" ]; then
+              echo "error: README says $marker, latest tag is $latest_tag" >&2
+              exit 1
+            fi
+            echo "ok: README marker $marker matches latest tag"
+          else
+            if [ "$marker" != "unreleased" ]; then
+              echo "error: README marker is '$marker' but no v* tag exists yet; expected 'unreleased'" >&2
+              exit 1
+            fi
+            echo "ok: no tags yet, README marker is 'unreleased'"
+          fi
+          END_EMBEDDED_CHECKER
+          EOF_SCRIPT
+          sed -i '1d;$d' "$checker"
+          sed -i 's/^ \{10\}//' "$checker"
+          chmod +x "$checker"
+          "$checker" --readme "$README_PATH"

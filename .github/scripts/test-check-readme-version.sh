@@ -37,15 +37,14 @@ write_readme() {
 assert_exit() {
   local name="$1" expected="$2" dir="$3"
   local actual=0
-  "$checker" --repo "$dir" --readme "$dir/README.md" >/tmp/mechub-readme-version-test.out 2>&1 || actual=$?
+  "$checker" --repo "$dir" --readme "$dir/README.md" >"$work/out" 2>&1 || actual=$?
   if [ "$actual" -ne "$expected" ]; then
     echo "FAIL: $name — expected exit $expected, got $actual"
-    sed 's/^/    /' /tmp/mechub-readme-version-test.out
+    sed 's/^/    /' "$work/out"
     failures=$((failures + 1))
   else
     echo "ok: $name"
   fi
-  rm -f /tmp/mechub-readme-version-test.out
 }
 
 work="$(mktemp -d)"
@@ -84,6 +83,30 @@ make_repo "$d"
 tag_repo "$d" v0.1.0
 write_readme "$d" "unreleased"
 assert_exit "unreleased marker once a tag exists fails" 1 "$d"
+
+# 6. a pre-release tag must not outrank the final release it precedes.
+d="$work/prerelease-does-not-outrank-release"
+make_repo "$d"
+tag_repo "$d" v0.19.0
+tag_repo "$d" v0.19.0-rc1
+write_readme "$d" "v0.19.0"
+assert_exit "final release tag wins over its own rc" 0 "$d"
+
+# 7. the workflow's embedded copy of the checker must stay byte-identical to
+# this script, or the two would silently drift apart.
+workflow="$script_dir/../workflows/readme-version.yml"
+embedded="$work/embedded-check-readme-version.sh"
+sed -n '/BEGIN_EMBEDDED_CHECKER$/,/END_EMBEDDED_CHECKER$/p' "$workflow" \
+  | sed '1d;$d' \
+  | sed 's/^ \{10\}//' \
+  > "$embedded"
+if diff -q "$checker" "$embedded" >/dev/null; then
+  echo "ok: workflow's embedded checker matches check-readme-version.sh"
+else
+  echo "FAIL: workflow's embedded checker has drifted from check-readme-version.sh"
+  diff -u "$embedded" "$checker" || true
+  failures=$((failures + 1))
+fi
 
 if [ "$failures" -gt 0 ]; then
   echo "$failures test(s) failed"
