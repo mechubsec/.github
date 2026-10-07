@@ -3,7 +3,7 @@
 <h1 align="center">mechub</h1>
 
 <p align="center">
-  <b>sovereign AI operations for network and security teams</b><br>
+  <b>sovereign network-security automation</b><br>
   <sub>deterministic decides · the model explains · a human approves</sub>
 </p>
 
@@ -33,24 +33,40 @@ the hub is where every vendor's MCP server meets, on hardware you own.
 | Layer | Projects |
 |---|---|
 | **Foundation** | [`mecmcp`](https://github.com/mechubsec/mecmcp) · [`rustnetconf`](https://github.com/mechubsec/rustnetconf) · [`rustez`](https://github.com/mechubsec/rustez) |
-| **MCP servers** | [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) · [`rustpanosmcp`](https://github.com/mechubsec/rustpanosmcp) · [`rustsdcmcp`](https://github.com/mechubsec/rustsdcmcp) · [`rustmistmcp`](https://github.com/mechubsec/rustmistmcp) · [`rustproxmoxmcp`](https://github.com/mechubsec/rustproxmoxmcp) · [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) · [`rustfortimcp`](https://github.com/mechubsec/rustfortimcp) · [`rustopnsmcp`](https://github.com/mechubsec/rustopnsmcp) |
-| **Data** | [`ssdf`](https://github.com/mechubsec/ssdf) — Sovereign Security Data Fabric with a Python core |
+| **MCP servers** | see maturity table below |
+| **Data** | [`ssdf`](https://github.com/mechubsec/ssdf) — sovereign security data fabric |
+| **Evaluation** | [`mechubbench`](https://github.com/mechubsec/mechubbench) — tool-call benchmark corpus and runner for network-automation agents |
 | **Skills & tools** | [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare) · [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter) · [`fwconfigsanitizer`](https://github.com/mechubsec/fwconfigsanitizer) · [`srxsync`](https://github.com/mechubsec/srxsync) |
+
+### MCP server maturity
+
+Version numbers alone don't carry the maturity story — a server can sit on a
+low 0.x for a long time because its vendor surface is small, not because it's
+less field-tested. The status column is the honest signal; read it alongside
+the version, not instead of it.
+
+| Server | Latest release | Status |
+|---|---|---|
+| [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) | v0.27.3 | ![status](https://img.shields.io/badge/status-beta-yellow) |
+| [`rustpanosmcp`](https://github.com/mechubsec/rustpanosmcp) | v0.13.0 | ![status](https://img.shields.io/badge/status-beta-yellow) |
+| [`rustproxmoxmcp`](https://github.com/mechubsec/rustproxmoxmcp) | v0.8.2 | ![status](https://img.shields.io/badge/status-beta-yellow) |
+| [`rustsdcmcp`](https://github.com/mechubsec/rustsdcmcp) | v0.0.1 | ![status](https://img.shields.io/badge/status-alpha-orange) |
+| [`rustmistmcp`](https://github.com/mechubsec/rustmistmcp) | v0.2.0 | ![status](https://img.shields.io/badge/status-alpha-orange) |
+| [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) | v0.5.0 | ![status](https://img.shields.io/badge/status-alpha-orange) |
+| [`rustfortimcp`](https://github.com/mechubsec/rustfortimcp) | unreleased | ![status](https://img.shields.io/badge/status-planned-lightgrey) |
+| [`rustopnsmcp`](https://github.com/mechubsec/rustopnsmcp) | unreleased | ![status](https://img.shields.io/badge/status-planned-lightgrey) |
+
+No server in the family is tagged `stable` yet; all are running in the
+maintainer's lab, not production, regardless of version number.
 
 ## Start here
 
 - **Foundation:** Start with [`mecmcp`](https://github.com/mechubsec/mecmcp) for shared MCP orchestration and deterministic change-control foundations.
-- **MCP servers:** Try [`rustopnsmcp`](https://github.com/mechubsec/rustopnsmcp) or [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) as runnable vendor-facing examples.
-- **Data:** Explore [`ssdf`](https://github.com/mechubsec/ssdf) for the Sovereign Security Data Fabric and its Python core.
+- **MCP servers:** Try [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) first, or [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) as a second released vendor-facing example.
+- **Data:** Explore [`ssdf`](https://github.com/mechubsec/ssdf) for the sovereign security data fabric.
 - **Skills & tools:** Use [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare), [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter), [`fwconfigsanitizer`](https://github.com/mechubsec/fwconfigsanitizer), or [`srxsync`](https://github.com/mechubsec/srxsync) for focused operator utilities.
 
-For a newcomer, `mecmcp` is the recommended first repository because it
-explains the shared foundation used by the rest of the ecosystem; choose a
-runnable server instead when the goal is to try an integration immediately.
-
-### Get in touch / testers wanted
-
-Questions, ideas, and testing feedback are welcome in the [mechub Discussions](https://github.com/orgs/mechubsec/discussions); report vulnerabilities privately via [SECURITY.md](https://github.com/mechubsec/.github/blob/main/SECURITY.md).
+Get in touch / testers wanted: for questions, ideas, or testing feedback, join the [mechub Discussions](https://github.com/orgs/mechubsec/discussions). Report vulnerabilities privately via [SECURITY.md](https://github.com/mechubsec/.github/blob/main/SECURITY.md).
 
 ## Principles
 
