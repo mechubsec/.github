@@ -33,10 +33,31 @@ the hub is where every vendor's MCP server meets, on hardware you own.
 | Layer | Projects |
 |---|---|
 | **Foundation** | [`mecmcp`](https://github.com/mechubsec/mecmcp) · [`rustnetconf`](https://github.com/mechubsec/rustnetconf) · [`rustez`](https://github.com/mechubsec/rustez) |
-| **MCP servers** | [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) · [`rustpanosmcp`](https://github.com/mechubsec/rustpanosmcp) · [`rustsdcmcp`](https://github.com/mechubsec/rustsdcmcp) · [`rustmistmcp`](https://github.com/mechubsec/rustmistmcp) · [`rustproxmoxmcp`](https://github.com/mechubsec/rustproxmoxmcp) · [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) · [`rustfortimcp`](https://github.com/mechubsec/rustfortimcp) · [`rustopnsmcp`](https://github.com/mechubsec/rustopnsmcp) |
+| **MCP servers** | see maturity table below |
 | **Data** | [`ssdf`](https://github.com/mechubsec/ssdf) — sovereign security data fabric |
 | **Evaluation** | [`mechubbench`](https://github.com/mechubsec/mechubbench) — tool-call benchmark corpus and runner for network-automation agents |
 | **Skills & tools** | [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare) · [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter) · [`fwconfigsanitizer`](https://github.com/mechubsec/fwconfigsanitizer) · [`srxsync`](https://github.com/mechubsec/srxsync) |
+
+### MCP server maturity
+
+Version numbers alone don't carry the maturity story — a server can sit on a
+low 0.x for a long time because its vendor surface is small, not because it's
+less field-tested. The status column is the honest signal; read it alongside
+the version, not instead of it.
+
+| Server | Latest release | Status |
+|---|---|---|
+| [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) | v0.27.2 | ![status](https://img.shields.io/badge/status-beta-yellow) |
+| [`rustpanosmcp`](https://github.com/mechubsec/rustpanosmcp) | v0.13.0 | ![status](https://img.shields.io/badge/status-beta-yellow) |
+| [`rustproxmoxmcp`](https://github.com/mechubsec/rustproxmoxmcp) | v0.8.2 | ![status](https://img.shields.io/badge/status-beta-yellow) |
+| [`rustsdcmcp`](https://github.com/mechubsec/rustsdcmcp) | v0.0.1 | ![status](https://img.shields.io/badge/status-alpha-orange) |
+| [`rustmistmcp`](https://github.com/mechubsec/rustmistmcp) | v0.2.0 | ![status](https://img.shields.io/badge/status-alpha-orange) |
+| [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) | v0.1.0 | ![status](https://img.shields.io/badge/status-alpha-orange) |
+| [`rustfortimcp`](https://github.com/mechubsec/rustfortimcp) | unreleased | ![status](https://img.shields.io/badge/status-planned-lightgrey) |
+| [`rustopnsmcp`](https://github.com/mechubsec/rustopnsmcp) | unreleased | ![status](https://img.shields.io/badge/status-planned-lightgrey) |
+
+No server in the family is tagged `stable` yet; all are running in the
+maintainer's lab, not production, regardless of version number.
 
 ## Principles
 
