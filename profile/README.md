@@ -34,9 +34,19 @@ the hub is where every vendor's MCP server meets, on hardware you own.
 |---|---|
 | **Foundation** | [`mecmcp`](https://github.com/mechubsec/mecmcp) · [`rustnetconf`](https://github.com/mechubsec/rustnetconf) · [`rustez`](https://github.com/mechubsec/rustez) |
 | **MCP servers** | [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) · [`rustpanosmcp`](https://github.com/mechubsec/rustpanosmcp) · [`rustsdcmcp`](https://github.com/mechubsec/rustsdcmcp) · [`rustmistmcp`](https://github.com/mechubsec/rustmistmcp) · [`rustproxmoxmcp`](https://github.com/mechubsec/rustproxmoxmcp) · [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) · [`rustfortimcp`](https://github.com/mechubsec/rustfortimcp) · [`rustopnsmcp`](https://github.com/mechubsec/rustopnsmcp) |
-| **Data** | [`ssdf`](https://github.com/mechubsec/ssdf) — sovereign security data fabric |
-| **Evaluation** | [`mechubbench`](https://github.com/mechubsec/mechubbench) — tool-call benchmark corpus and runner for network-automation agents |
-| **Skills & tools** | [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare) · [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter) · [`fwconfigsantizer`](https://github.com/mechubsec/fwconfigsantizer) · [`srxsync`](https://github.com/mechubsec/srxsync) |
+| **Data** | [`ssdf`](https://github.com/mechubsec/ssdf) — Sovereign Security Data Fabric with a Python core |
+| **Skills & tools** | [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare) · [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter) · [`fwconfigsanitizer`](https://github.com/mechubsec/fwconfigsanitizer) · [`srxsync`](https://github.com/mechubsec/srxsync) |
+
+## Start here
+
+- **Foundation:** Start with [`mecmcp`](https://github.com/mechubsec/mecmcp) for shared MCP orchestration and deterministic change-control foundations.
+- **MCP servers:** Try [`rustopnsmcp`](https://github.com/mechubsec/rustopnsmcp) or [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) as runnable vendor-facing examples.
+- **Data:** Explore [`ssdf`](https://github.com/mechubsec/ssdf) for the Sovereign Security Data Fabric and its Python core.
+- **Skills & tools:** Use [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare), [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter), [`fwconfigsanitizer`](https://github.com/mechubsec/fwconfigsanitizer), or [`srxsync`](https://github.com/mechubsec/srxsync) for focused operator utilities.
+
+For a newcomer, `mecmcp` is the recommended first repository because it
+explains the shared foundation used by the rest of the ecosystem; choose a
+runnable server instead when the goal is to try an integration immediately.
 
 ## Principles
 
