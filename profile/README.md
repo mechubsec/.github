@@ -48,6 +48,10 @@ For a newcomer, `mecmcp` is the recommended first repository because it
 explains the shared foundation used by the rest of the ecosystem; choose a
 runnable server instead when the goal is to try an integration immediately.
 
+### Get in touch / testers wanted
+
+Questions, ideas, and testing feedback are welcome in the [mechub Discussions](https://github.com/orgs/mechubsec/discussions); report vulnerabilities privately via [SECURITY.md](https://github.com/mechubsec/.github/blob/main/SECURITY.md).
+
 ## Principles
 
 - **Self-hosted by default.** Your realm, your models, your rules.
