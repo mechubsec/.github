@@ -13,3 +13,5 @@ permissions:
 jobs:
   secrets:
     uses: ./.github/workflows/gitleaks.yml
+  readme-version:
+    uses: ./.github/workflows/readme-version.yml
