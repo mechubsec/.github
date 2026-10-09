@@ -18,7 +18,7 @@ body:
     id: what-happened
     attributes:
       label: What happened?
-      description: Tell us what went wrong and include relevant context after removing real device data.
+      description: Tell us what went wrong and include relevant context only after redacting hostnames, IPs, serials, credentials, and other real device data.
     validations:
       required: true
   - type: input
@@ -33,7 +33,7 @@ body:
     id: steps
     attributes:
       label: Steps to reproduce
-      description: List the smallest set of steps that reproduces the problem, without real device data.
+      description: List the smallest set of steps that reproduces the problem, after redacting hostnames, IPs, serials, credentials, and other real device data.
     validations:
       required: true
   - type: textarea
