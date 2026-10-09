@@ -17,18 +17,3 @@ body:
       description: Describe the behavior or outcome you would like.
     validations:
       required: true
-  - type: input
-    id: version
-    attributes:
-      label: Version
-      description: Which project version or commit are you using?
-      placeholder: e.g. 1.2.3 or abc1234
-    validations:
-      required: true
-  - type: textarea
-    id: expected
-    attributes:
-      label: Expected result
-      description: What should happen after this feature is implemented?
-    validations:
-      required: true
