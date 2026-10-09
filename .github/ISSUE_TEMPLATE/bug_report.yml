@@ -3,11 +3,22 @@ description: Report a reproducible problem in a mechub project.
 title: "[Bug]: "
 labels: ["bug"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not paste real device data.** Redact hostnames, IP addresses, serial numbers, usernames, credentials, keys, SNMP communities, and free-text descriptions from configs, logs, and error output before posting. Security problems go through [SECURITY.md](https://github.com/mechubsec/.github/blob/main/SECURITY.md), not public issues.
+  - type: checkboxes
+    id: redaction
+    attributes:
+      label: Data hygiene
+      options:
+        - label: I have removed real hostnames, IPs, serials, credentials, and other device data from this report.
+          required: true
   - type: textarea
     id: what-happened
     attributes:
       label: What happened?
-      description: Tell us what went wrong and include relevant context.
+      description: Tell us what went wrong, omitting real device data from any error output or context.
     validations:
       required: true
   - type: input
@@ -22,7 +33,7 @@ body:
     id: steps
     attributes:
       label: Steps to reproduce
-      description: List the smallest set of steps that reproduces the problem.
+      description: List the smallest set of steps that reproduces the problem, without real device data.
     validations:
       required: true
   - type: textarea

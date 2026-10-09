@@ -29,7 +29,7 @@ Use exactly one of these maturity labels in the status badge:
 | Status | Badge | Use when |
 | --- | --- | --- |
 | Planned | `status-planned-lightgrey` | The project is proposed or not yet usable. |
-| Alpha | `status-alpha-blue` | An early usable version exists; interfaces and behaviour may change. |
+| Alpha | `status-alpha-orange` | An early usable version exists; interfaces and behaviour may change. |
 | Beta | `status-beta-yellow` | The project is usable for evaluation; interfaces are stabilising. |
 | Stable | `status-stable-brightgreen` | The supported path is established and maintained. |
 
@@ -38,7 +38,7 @@ additional maturity labels or colors:
 
 ```markdown
 ![Status: Planned](https://img.shields.io/badge/status-planned-lightgrey)
-![Status: Alpha](https://img.shields.io/badge/status-alpha-blue)
+![Status: Alpha](https://img.shields.io/badge/status-alpha-orange)
 ![Status: Beta](https://img.shields.io/badge/status-beta-yellow)
 ![Status: Stable](https://img.shields.io/badge/status-stable-brightgreen)
 ```

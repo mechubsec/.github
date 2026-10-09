@@ -23,8 +23,6 @@ body:
       label: Version
       description: Which project version or commit are you using?
       placeholder: e.g. 1.2.3 or abc1234
-    validations:
-      required: true
   - type: textarea
     id: expected
     attributes:
