@@ -59,6 +59,15 @@ the version, not instead of it.
 No server in the family is tagged `stable` yet; all are running in the
 maintainer's lab, not production, regardless of version number.
 
+## Start here
+
+- **Foundation:** Start with [`mecmcp`](https://github.com/mechubsec/mecmcp) for shared MCP orchestration and deterministic change-control foundations.
+- **MCP servers:** Try [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) first, or [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) as a second released vendor-facing example.
+- **Data:** Explore [`ssdf`](https://github.com/mechubsec/ssdf) for the sovereign security data fabric.
+- **Skills & tools:** Use [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare), [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter), [`fwconfigsanitizer`](https://github.com/mechubsec/fwconfigsanitizer), or [`srxsync`](https://github.com/mechubsec/srxsync) for focused operator utilities.
+
+Get in touch / testers wanted: for questions, ideas, or testing feedback, join the [mechub Discussions](https://github.com/orgs/mechubsec/discussions). Report vulnerabilities privately via [SECURITY.md](https://github.com/mechubsec/.github/blob/main/SECURITY.md).
+
 ## Principles
 
 - **Self-hosted by default.** Your realm, your models, your rules.
