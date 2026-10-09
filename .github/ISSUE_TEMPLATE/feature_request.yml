@@ -1,0 +1,19 @@
+name: Feature request
+description: Suggest an improvement for a mechub project.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the user or operator problem.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What do you propose?
+      description: Describe the behavior or outcome you would like.
+    validations:
+      required: true
