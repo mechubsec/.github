@@ -18,7 +18,7 @@ body:
     id: what-happened
     attributes:
       label: What happened?
-      description: Tell us what went wrong, omitting real device data from any error output or context.
+      description: Tell us what went wrong and include relevant context after removing real device data.
     validations:
       required: true
   - type: input
