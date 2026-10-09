@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security issues
+    url: https://github.com/mechubsec/.github/blob/main/SECURITY.md
+    about: Report suspected vulnerabilities privately using SECURITY.md.
+  - name: Questions and community discussion
+    url: https://github.com/orgs/mechubsec/discussions
+    about: Ask questions and share ideas in the mechub community discussions.
