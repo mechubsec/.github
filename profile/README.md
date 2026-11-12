@@ -47,7 +47,7 @@ the version, not instead of it.
 
 | Server | Latest release | Status |
 |---|---|---|
-| [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) | [v2.7.3](https://github.com/mechubsec/rustjunosmcp/releases/tag/v2.7.3) | ![status](https://img.shields.io/badge/status-stable-brightgreen) |
+| [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) | [v2.7.4](https://github.com/mechubsec/rustjunosmcp/releases/tag/v2.7.4) | ![status](https://img.shields.io/badge/status-stable-brightgreen) |
 | [`rustpanosmcp`](https://github.com/mechubsec/rustpanosmcp) | [v0.17.1](https://github.com/mechubsec/rustpanosmcp/releases/tag/v0.17.1) | ![status](https://img.shields.io/badge/status-beta-yellow) |
 | [`rustproxmoxmcp`](https://github.com/mechubsec/rustproxmoxmcp) | [v0.12.1](https://github.com/mechubsec/rustproxmoxmcp/releases/tag/v0.12.1) | ![status](https://img.shields.io/badge/status-beta-yellow) |
 | [`rustsdcmcp`](https://github.com/mechubsec/rustsdcmcp) | [v0.7.0](https://github.com/mechubsec/rustsdcmcp/releases/tag/v0.7.0) | ![status](https://img.shields.io/badge/status-alpha-orange) |
