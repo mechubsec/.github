@@ -37,6 +37,7 @@ the hub is where every vendor's MCP server meets, on hardware you own.
 | **Data** | [`ssdf`](https://github.com/mechubsec/ssdf) — sovereign security data fabric |
 | **Evaluation** | [`mechubbench`](https://github.com/mechubsec/mechubbench) — tool-call benchmark corpus and runner for network-automation agents |
 | **Skills & tools** | [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare) · [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter) · [`fwconfigsanitizer`](https://github.com/mechubsec/fwconfigsanitizer) · [`srxsync`](https://github.com/mechubsec/srxsync) |
+| **Bots & agents** | [`mecbots`](https://github.com/mechubsec/mecbots) — small scheduled bots: deterministic reports, local-model advice, scrubbed Discord posts · [`mecagents`](https://github.com/mechubsec/mecagents) — local-model agents on read-only MCP tokens, every finding checked by code (both alpha) |
 
 ### MCP server maturity
 
@@ -66,6 +67,7 @@ lab, not production, regardless of version number.
 - **MCP servers:** Try [`rustjunosmcp`](https://github.com/mechubsec/rustjunosmcp) first, or [`rustunifimcp`](https://github.com/mechubsec/rustunifimcp) as a second released vendor-facing example.
 - **Data:** Explore [`ssdf`](https://github.com/mechubsec/ssdf) for the sovereign security data fabric.
 - **Skills & tools:** Use [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare), [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter), [`fwconfigsanitizer`](https://github.com/mechubsec/fwconfigsanitizer), or [`srxsync`](https://github.com/mechubsec/srxsync) for focused operator utilities.
+- **Bots & agents:** Read [`mecbots`](https://github.com/mechubsec/mecbots) to build a first bot, then [`mecagents`](https://github.com/mechubsec/mecagents) for the riskier tier: a local model with skills and read-only tools, graded by code.
 
 Get in touch / testers wanted: for questions, ideas, or testing feedback, join the [mechub Discussions](https://github.com/orgs/mechubsec/discussions). Report vulnerabilities privately via [SECURITY.md](https://github.com/mechubsec/.github/blob/main/SECURITY.md).
 
