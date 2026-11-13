@@ -37,7 +37,7 @@ the hub is where every vendor's MCP server meets, on hardware you own.
 | **Data** | [`ssdf`](https://github.com/mechubsec/ssdf) — sovereign security data fabric |
 | **Evaluation** | [`mechubbench`](https://github.com/mechubsec/mechubbench) — tool-call benchmark corpus and runner for network-automation agents |
 | **Skills & tools** | [`fwskillsshare`](https://github.com/mechubsec/fwskillsshare) · [`firewallintentconverter`](https://github.com/mechubsec/firewallintentconverter) · [`fwconfigsanitizer`](https://github.com/mechubsec/fwconfigsanitizer) · [`srxsync`](https://github.com/mechubsec/srxsync) |
-| **Bots & agents** | [`mecbots`](https://github.com/mechubsec/mecbots) — small scheduled bots: deterministic reports, local-model advice, scrubbed Discord posts · [`mecagents`](https://github.com/mechubsec/mecagents) — local-model agents on read-only MCP tokens, every finding checked by code (both alpha) |
+| **Bots & agents** | [`mecbots`](https://github.com/mechubsec/mecbots) — small scheduled bots: deterministic reports, local-model advice, scrubbed Discord posts · [`mecagents`](https://github.com/mechubsec/mecagents) — local-model agents on read-only MCP tokens, every finding checked by code (both alpha). Discord is not sovereign: it only receives scrubbed reports, and a self-hosted ntfy option is planned |
 
 ### MCP server maturity
 
